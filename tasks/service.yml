@@ -1,4 +1,12 @@
 ---
+- name: 'Manage ntp service before chrony'
+  become: yes
+  service:
+    name: '{{ ntp_service_name }}'
+    enabled: '{{ ntp_service_enabled }}'
+    state: '{{ ntp_service_state }}'
+  tags: 'chrony-service'
+
 - name: 'Manage the chrony service'
   become: yes
   service:
